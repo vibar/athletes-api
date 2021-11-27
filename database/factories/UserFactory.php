@@ -30,6 +30,7 @@ class UserFactory extends Factory
             'birthdate' => $this->faker->date,
             'height' => rand(150, 200),
             'weight' => rand(60, 100),
+            'notes' => $this->faker->paragraph(rand(0, 5)),
         ];
     }
 }

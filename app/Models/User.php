@@ -23,6 +23,7 @@ class User extends Model
         'birthdate',
         'height',
         'weight',
+        'notes',
         'category_id',
     ];
 

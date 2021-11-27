@@ -34,9 +34,14 @@ class CategoryController extends Controller
     /**
      * @param Request $request
      * @return CategoryResource
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|unique:categories,id',
+        ]);
+
         $category = Category::create($request->all());
 
         return new CategoryResource($category);
@@ -46,9 +51,14 @@ class CategoryController extends Controller
      * @param Request $request
      * @param int $id
      * @return CategoryResource
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, int $id)
     {
+        $this->validate($request, [
+            'name' => 'required|unique:categories,id,'.$id,
+        ]);
+
         $category = Category::findOrFail($id);
 
         $category->update($request->all());
