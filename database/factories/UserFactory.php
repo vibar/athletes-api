@@ -24,6 +24,12 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
+            'document' => rand(100000000, 999999999),
+            'address' => $this->faker->address,
+            'phone' => rand(900000000, 999999999),
+            'birthdate' => $this->faker->date,
+            'height' => rand(150, 200),
+            'weight' => rand(60, 100),
         ];
     }
 }
