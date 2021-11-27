@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Rules\NIFRule;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -41,7 +42,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'nullable|unique:users,email',
-            'document' => 'nullable|integer|digits:9|unique:users,document',
+            'document' => ['nullable', 'integer', 'digits:9', 'unique:users,document', new NIFRule],
             'address' => 'nullable',
             'phone' => 'nullable|integer|digits:9',
             'birthdate' => 'nullable|date',
