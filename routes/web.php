@@ -28,6 +28,6 @@ $router->group(['prefix' => 'athletes'], function () use ($router) {
     $router->get('', UserController::class.'@index');
     $router->get('{id}', UserController::class.'@show');
     $router->post('', UserController::class.'@store');
-    $router->put('{id}', UserController::class.'@update');
+    $router->patch('{id}', UserController::class.'@update');
     $router->delete('{id}', UserController::class.'@destroy');
 });

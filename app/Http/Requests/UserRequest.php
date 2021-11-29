@@ -16,7 +16,7 @@ class UserRequest
     public static function rules()
     {
         $rules =  [
-            'name' => 'required',
+            'name' => '',
             'email' => 'nullable|unique:users,email',
             'document' => ['nullable', 'integer', 'digits:9', 'unique:users,document', new NIFRule],
             'address' => 'nullable',
@@ -26,12 +26,15 @@ class UserRequest
             'weight' => 'nullable|integer|min:1|max:500',
             'notes' => 'nullable',
             'properties' => 'nullable|array',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'exists:categories,id',
         ];
 
         if ($id = request()->route('id')) {
             $rules['email'] .= ','.$id;
             $rules['document'][3] .= ','.$id;
+        } else {
+            $rules['name'] = 'required';
+            $rules['category_id'] = 'required|'.$rules['category_id'];
         }
 
         return $rules;

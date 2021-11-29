@@ -58,8 +58,8 @@ class UserController extends Controller
         $this->validate($request, UserRequest::rules());
 
         $user = User::findOrFail($id);
-
-        $user->update($request->all());
+        $user->fill($request->all());
+        $user->save();
 
         return new UserResource($user);
     }
