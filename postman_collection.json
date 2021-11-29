@@ -1,0 +1,225 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Athletes API",
+		"_postman_id": "e6ffcdbf-f0c3-7e96-3087-29b57e083740",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "athletes",
+			"description": "",
+			"item": [
+				{
+					"name": "athletes.index",
+					"request": {
+						"url": "http://athletes-api.local/athletes",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "athletes.show",
+					"request": {
+						"url": "http://athletes-api.local/athletes/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "athletes.store",
+					"request": {
+						"url": "http://athletes-api.local/athletes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Lucas Lopes\",\n\t\"category_id\": 2,\n\t\"document\": \"123456789\",\n\t\"properties\": {\n\t\t\"belt\": \"havy\"\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "athletes.update",
+					"request": {
+						"url": "http://athletes-api.local/athletes/1",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"João Gomes\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "athletes.delete",
+					"request": {
+						"url": "http://athletes-api.local/athletes/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"description": "",
+			"item": [
+				{
+					"name": "categories.index",
+					"request": {
+						"url": "http://athletes-api.local/categories",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "categories.show",
+					"request": {
+						"url": "http://athletes-api.local/categories/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "categories.store",
+					"request": {
+						"url": "http://athletes-api.local/categories",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Basketball\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "categories.update",
+					"request": {
+						"url": "http://athletes-api.local/categories/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "categories.delete",
+					"request": {
+						"url": "http://athletes-api.local/categories/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
