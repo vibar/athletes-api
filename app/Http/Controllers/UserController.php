@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Rules\NIFRule;
@@ -39,18 +40,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'nullable|unique:users,email',
-            'document' => ['nullable', 'integer', 'digits:9', 'unique:users,document', new NIFRule],
-            'address' => 'nullable',
-            'phone' => 'nullable|integer|digits:9',
-            'birthdate' => 'nullable|date',
-            'height' => 'nullable|integer|min:1|max:300',
-            'weight' => 'nullable|integer|min:1|max:500',
-            'notes' => 'nullable',
-            'category_id' => 'required|exists:categories,id',
-        ]);
+        $this->validate($request, UserRequest::rules());
 
         $user = User::create($request->all());
 
@@ -65,18 +55,7 @@ class UserController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'nullable|unique:users,email,'.$id,
-            'document' => 'nullable|integer|digits:9|unique:users,document,'.$id,
-            'address' => 'nullable',
-            'phone' => 'nullable|integer|digits:9',
-            'birthdate' => 'nullable|date',
-            'height' => 'nullable|integer|min:1|max:300',
-            'weight' => 'nullable|integer|min:1|max:500',
-            'notes' => 'nullable',
-            'category_id' => 'required|exists:categories,id',
-        ]);
+        $this->validate($request, UserRequest::rules());
 
         $user = User::findOrFail($id);
 

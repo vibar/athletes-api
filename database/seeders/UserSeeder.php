@@ -17,9 +17,29 @@ class UserSeeder extends Seeder
     {
         $categories = Category::all();
 
-        User::factory()
-            ->count(50)
-            ->for($categories[rand(0, $categories->count() - 1)])
-            ->create();
+        $propertyValues = [
+            'foot' => ['left', 'right'][rand(0,1)],
+            'position' => ['goalkeeper', 'defender', 'midfielder', 'forward'][rand(0,3)],
+            'belt' => ['white', 'orange', 'blue', 'yellow', 'green', 'brown', 'black'][rand(0, 6)],
+            'style' => ['shotokan', 'shorin-ryu', 'ashihara'][rand(0, 2)],
+            'hand' => ['left', 'right'][rand(0,1)],
+            'rank' => rand(1, 100),
+        ];
+
+        foreach ($categories as $category) {
+
+            User::factory([
+                'properties' => function () use ($category, $propertyValues) {
+                    $value = [];
+                    foreach ($category->properties as $property) {
+                        $value[$property] = $propertyValues[$property];
+                    }
+                    return $value;
+                },
+            ])
+                ->count(rand(10, 20))
+                ->for($category)
+                ->create();
+        }
     }
 }

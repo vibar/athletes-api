@@ -25,6 +25,7 @@ class UserResource extends JsonResource
             'height' => $this->height,
             'weight' => $this->weight,
             'notes' => $this->notes,
+            'properties' => $this->properties,
             'category' => new CategoryResource($this->category),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

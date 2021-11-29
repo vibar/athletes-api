@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('height')->nullable();
             $table->unsignedInteger('weight')->nullable();
             $table->text('notes')->nullable();
+            $table->json('properties')->nullable();
             $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });

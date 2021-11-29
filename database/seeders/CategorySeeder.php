@@ -15,9 +15,9 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $categories = [
-            ['name' => 'Football'],
-            ['name' => 'Karate'],
-            ['name' => 'Tennis'],
+            ['name' => 'Football', 'properties' => ['foot', 'position']],
+            ['name' => 'Karate', 'properties' => ['belt', 'style']],
+            ['name' => 'Tennis', 'properties' => ['hand', 'rank']],
         ];
 
         foreach ($categories as $category) {

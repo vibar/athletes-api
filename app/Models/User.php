@@ -24,6 +24,7 @@ class User extends Model
         'height',
         'weight',
         'notes',
+        'properties',
         'category_id',
     ];
 
@@ -34,6 +35,7 @@ class User extends Model
      */
     protected $casts = [
         'birthdate' => 'date',
+        'properties' => 'array',
     ];
 
     /**
@@ -42,5 +44,23 @@ class User extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * @param $value
+     * @return mixed
+     */
+    public function setPropertiesAttribute($value)
+    {
+        $parsedValue = [];
+        $properties = $this->category->properties ?? [];
+
+        foreach ($properties as $property) {
+            if (isset($value[$property])) {
+                $parsedValue[$property] = $value[$property];
+            }
+        }
+
+        $this->attributes['properties'] = json_encode($parsedValue);
     }
 }
